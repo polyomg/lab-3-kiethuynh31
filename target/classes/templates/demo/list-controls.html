@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Controls</title>
+</head>
+<body>
+  <h3>Fill to SelectBox</h3>
+  <form>
+    <select name="cbo" id="cbo">
+      <th:block th:each="staff : ${list}">
+        <option th:value="${staff.id}" th:text="${#strings.capitalizeWords(staff.fullname)}"></option>
+      </th:block>
+    </select>
+  </form>
+
+  <h3>Create Radio Button Group</h3>
+  <form>
+    <th:block th:each="staff : ${list}">
+      <label>
+        <input type="radio" name="rdo" th:value="${staff.id}">
+        <span th:text="${#strings.capitalizeWords(staff.fullname)}"></span>
+      </label>
+      <br/>
+    </th:block>
+  </form>
+</body>
+</html>
